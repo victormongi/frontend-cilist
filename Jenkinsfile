@@ -8,10 +8,10 @@ pipeline {
       stage('Edit ENV') {
         steps {
           script {
-            if ( env.GIT_BRANCH == 'origin/staging' ) {
+            if ( env.GIT_BRANCH == 'staging' ) {
               sh "echo REACT_APP_BACKEND=${URL_STAGING} > .env"
             }
-            else if ( env.GIT_BRANCH == 'origin/main' ) {
+            else if ( env.GIT_BRANCH == 'main' ) {
               sh "echo REACT_APP_BACKEND=${URL_PROD} > .env"
             }
           }
@@ -31,11 +31,11 @@ pipeline {
       stage('Deploy to Kubernetes') {
         steps {
           script {
-            if ( env.GIT_BRANCH == 'origin/staging' ) {
+            if ( env.GIT_BRANCH == 'staging' ) {
               sh "sed -i 's/IMAGE_TAG/${GIT_BRANCH}-${BUILD_NUMBER}/g' deployment.yaml"
               sh "kubectl apply -f deployment.yaml -n staging"
             }
-            else if ( env.GIT_BRANCH == 'origin/main' ) {
+            else if ( env.GIT_BRANCH == 'main' ) {
               sh "sed -i 's/IMAGE_TAG/${GIT_BRANCH}-${BUILD_NUMBER}/g' deployment.yaml"
               sh "kubectl apply -f deployment.yaml -n production"
             }
