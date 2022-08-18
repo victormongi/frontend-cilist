@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-        REGISTRY = '898130718046.dkr.ecr.us-east-1.amazonaws.com'
+        REGISTRY = '898130718046.dkr.ecr.ap-south-1.amazonaws.com'
         APPS = 'big-project-frontend'
   }
     stages{
