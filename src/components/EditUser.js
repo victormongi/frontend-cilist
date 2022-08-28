@@ -18,7 +18,7 @@ const EditUser = () => {
   const updateUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`${process.env.REACT_APP_BACKEND}/users/${id}`, {
+      await axios.patch( process.env.REACT_APP_BACKEND_URL + `/users/${id}`, {
         name,
         email,
         gender,
@@ -30,7 +30,7 @@ const EditUser = () => {
   };
 
   const getUserById = async () => {
-    const response = await axios.get(`${process.env.REACT_APP_BACKEND}/users/${id}`);
+    const response = await axios.get(process.env.REACT_APP_BACKEND_URL + `/users/${id}`);
     setName(response.data.name);
     setEmail(response.data.email);
     setGender(response.data.gender);

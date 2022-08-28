@@ -17,13 +17,13 @@ const UserList = () => {
 
 
   const getUsers = async () => {
-    const response = await axios.get(`${process.env.REACT_APP_BACKEND}/users`);
+    const response = await axios.get(process.env.REACT_APP_BACKEND_URL+`/users/`);
     setUser(response.data);
   };
 
   const deleteUser = async (id) => {
     try {
-      await axios.delete(`${process.env.REACT_APP_BACKEND}/users/${id}`);
+      await axios.delete(process.env.REACT_APP_BACKEND_URL+`/users/${id}`);
       getUsers();
     } catch (error) {
       console.log(error);
