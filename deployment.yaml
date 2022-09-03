@@ -33,5 +33,12 @@ spec:
       containers:
       - name: mern-frontend
         image: irwankilay/frontend-prod:IMAGE_TAG
+        resources:
+          limits:
+            memory: 200Mi
+            cpu: 100m
+          requests:
+            memory: 80Mi
+            cpu: 50m
         ports:
         - containerPort: 3000
