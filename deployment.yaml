@@ -32,6 +32,6 @@ spec:
     spec:
       containers:
       - name: mern-frontend
-        image: irwankilay/frontend-prod:1
+        image: irwankilay/frontend-prod::IMAGE_TAG
         ports:
         - containerPort: 3000
