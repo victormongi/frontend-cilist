@@ -32,7 +32,6 @@ pipeline {
     post {
         always {
             echo 'One way or another, I have finished'
-             sh "docker image rm ${REGISTRY}/${APPS}:${BUILD_NUMBER}"
         }
         success {
             echo 'I succeeded!'
