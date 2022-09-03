@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mern-frontend
+  labels:
+    app: mern
+    tier: frontend
+spec:
+  ports:
+  - port: 3000
+    targetPort: 3000
+    name: frontend-port
+  selector:
+    app: mern
+    tier: frontend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mern-frontend
+spec:
+  selector:
+    matchLabels:
+      app: mern
+      tier: frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mern
+        tier: frontend
+    spec:
+      containers:
+      - name: mern-frontend
+        image: irwankilay/frontend-prod:1
+        ports:
+        - containerPort: 3000
+~                              
