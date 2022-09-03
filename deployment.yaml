@@ -35,4 +35,3 @@ spec:
         image: irwankilay/frontend-prod:1
         ports:
         - containerPort: 3000
-~                              
