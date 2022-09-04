@@ -21,6 +21,7 @@ pipeline {
             if ( env.GIT_BRANCH == 'staging' ) {
               sh "sed -i 's/IMAGE_TAG/${BUILD_NUMBER}/g' deployment.yaml"
               sh "kubectl apply -f deployment.yaml -n staging"
+              sh "kubectl apply -f hpa.yaml -n staging"
             }
             else if ( env.GIT_BRANCH == 'main' ) {
               echo "deployed"
