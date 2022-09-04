@@ -24,7 +24,6 @@ pipeline {
             else if ( env.GIT_BRANCH == 'main' ) {
               sh "sed -i 's/IMAGE_TAG/${BUILD_NUMBER}/g' deployment.yaml"
               sh "kubectl apply -f deployment.yaml -n production"
-              sh "kubectl apply -f hpa.yaml -n production"
             }
           }
         }
