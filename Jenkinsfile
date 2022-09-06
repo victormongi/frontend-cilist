@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-        REGISTRY = 'irwankilay'
+        REGISTRY = 'victormongi'
         APPS = 'frontend-prod'
   }
     stages{
@@ -19,12 +19,12 @@ pipeline {
         steps {
           script {
             if ( env.GIT_BRANCH == 'staging' ) {
-              echo "deployed"
+              sh "sed -i 's/IMAGE_TAG/${BUILD_NUMBER}/g' deployment.yaml"
+              sh "kubectl apply -f deployment.yaml -n staging"
             }
             else if ( env.GIT_BRANCH == 'main' ) {
               sh "sed -i 's/IMAGE_TAG/${BUILD_NUMBER}/g' deployment.yaml"
               sh "kubectl apply -f deployment.yaml -n production"
-              sh "kubectl apply -f hpa.yaml -n production"
             }
           }
         }
