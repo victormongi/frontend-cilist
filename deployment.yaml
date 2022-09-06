@@ -32,7 +32,7 @@ spec:
     spec:
       containers:
       - name: mern-frontend
-        image: irwankilay/frontend-staging:IMAGE_TAG
+        image: victormongi/frontend-staging:IMAGE_TAG
         resources:
           limits:
             memory: 500Mi
